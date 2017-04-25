@@ -28,7 +28,7 @@ connection.query('select * from products', function(err,res){
 
 var askproduct = function(){
 	inquirer.prompt([{
-		name:"ProductID",
+		name:"productID",
 		type:"input",
 		message:"Please enter productID for product you want.",
 		validate:function(value){
@@ -54,6 +54,7 @@ var askproduct = function(){
 		var query="select price,stock_quantity from products where ?";
 		connection.query(query,{item_id:answer.productID},function(err,res){
 			if (err) throw err;
+			//console.log(res);
 			
 			var productPrice=res[0].price;
 			var stockAvailable = res[0].stock_quantity;
